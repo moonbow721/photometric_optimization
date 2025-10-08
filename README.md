@@ -27,6 +27,34 @@ This repository
 
 **The demos will be released soon.**
 
+## Using the DPoser Prior
+
+
+
+### 1. Prerequisites
+
+Before you begin, please complete the following setup steps:
+
+* **Download Models:** First, download the required model files for this repository from this [**Google Drive link**](https://drive.google.com/file/d/1i65D5Sa46aiiaoj1txYaypn-l0IHYd6s/view?usp=drive_link).
+
+* **Configure DPoser-X:** This project depends on our **[DPoser-X repository](https://github.com/moonbow721/DPoser-X)**. Please ensure you have cloned it and correctly configured its Python environment and model checkpoints. The `prior.py` script dynamically imports DPoser modules by appending its directory to the system path, so a complete DPoser-X setup is essential for it to work.
+
+---
+
+### 2. Running the Demo
+
+To run the main demo script with the DPoser prior and generate a video of the fitting process, execute the following command:
+
+```bash
+python photometric_fitting.py --prior DPoser --device cuda:0 --save-video True
+```
+This will run the optimization on the sample images provided and save the results, including a vis_video.avi file, in the output directory.
+
+### 3. Processing Custom Images
+You can easily adapt the script to process your own images. The only requirement is to provide facial landmark files that correspond to your images.
+
+You can generate the required JSON landmark files using the excellent pre-trained models available in [MMPose](https://mmpose.readthedocs.io/en/0.x/topics/face.html). Simply process your images with an MMPose face model and use the resulting JSON output as input for our script.
+
 ## Build FLAME texture space from in-the-wild images
 
 The goal is to build a texture space from in-the-wild images in order to cover large range of ethnicities, age groups, etc. We therefore randomly select 1500 images from the [FFHQ dataset](https://github.com/NVlabs/ffhq-dataset) in order to build a texture space. This is done in following steps
